@@ -1,9 +1,13 @@
 import React from 'react'
 
-const Imagem = ({src, alt, key}) => {
+const Imagem = ({src, alt, imgStyle, key}) => {
   return (
-    <div key={key}>
-      <img src={src} alt={alt}/>
+    <div
+      className={`${imgStyle} justify-content-center flex`} 
+      key={key}>
+      <img
+        src={src} 
+        alt={alt}/>
     </div>
   )
 }
