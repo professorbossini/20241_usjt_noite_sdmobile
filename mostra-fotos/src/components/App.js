@@ -13,20 +13,31 @@ class App extends React.Component {
   pexelsClient = null
   chave = '563492ad6f91700001000001e00b21ab6afb45a18c1d44a759556f14'
 
-  componentDidMount(){
-    // this.pexelsClient = createClient(this.chave)
-    pexelsClient.get('/hello')
-    .then((res) => this.setState({texto: res.data}))
-  }
+  // componentDidMount(){
+  //   // this.pexelsClient = createClient(this.chave)
+  //   pexelsClient.get('/hello')
+  //   .then((res) => this.setState({texto: res.data}))
+  // }
   onBuscaRealizada = (termo) => {
-    this.pexelsClient.photos.search({
-      query: termo,
-      per_page: 10
+    // this.pexelsClient.photos.search({
+    //   query: termo,
+    //   per_page: 10
+    // })
+    // .then((result) => {
+    //   this.setState({
+    //     photos: result.photos
+    //   })
+    // })
+    pexelsClient.get('/search', {
+      params: {
+        query: termo,
+        per_page: 10  
+      }
     })
     .then((result) => {
       this.setState({
-        photos: result.photos
-      })
+        photos: result.data.photos
+      })  
     })
   }
   render(){
